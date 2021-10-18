@@ -81,6 +81,7 @@ public class ServidorGato implements Runnable{
     @Override
     public void run() {
         System.out.println("Jugador conectado: " + jugador.getInetAddress());
+        System.out.println("Movimiento realizado por el jugador: " + jugador.getInetAddress());
     }
 }
 

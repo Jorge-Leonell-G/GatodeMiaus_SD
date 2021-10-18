@@ -25,7 +25,7 @@ public class clienteMiau implements Runnable{
     private DataOutputStream out;
     private DataInputStream in;
     //El puerto debe ser el mismo en el que escucha el servidor
-    private int puerto = 57928;
+    private int puerto = 53639;
     //Si estamos en nuestra misma maquina usamos localhost si no la ip de la maquina servidor
     private String host = "localhost";
     //acceso a los labels del tablero
@@ -34,16 +34,19 @@ public class clienteMiau implements Runnable{
     private String move;
     private boolean turno;
     
-    private ventanaPadre frame;
+    private ventanaPadre frameP;
+    private ventanaUno frameU;
+    
+    private int casilla;
     
     public clienteMiau(){
         
     }
     
     
-    public clienteMiau(ventanaPadre frame){
+    public clienteMiau(ventanaPadre frameP){
         try{
-            this.frame = frame;
+            this.frameP = frameP;
             //Creamos el socket con el host y el puerto, declaramos los streams de comunicacion
             client = new Socket(host, puerto);
             in = new DataInputStream(client.getInputStream());
@@ -51,6 +54,14 @@ public class clienteMiau implements Runnable{
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+    
+    public clienteMiau(ventanaUno frameU) throws IOException{
+            this.frameU = frameU;
+            //Creamos el socket con el host y el puerto, declaramos los streams de comunicacion
+            client = new Socket(host, puerto);
+            in = new DataInputStream(client.getInputStream());
+            out = new DataOutputStream(client.getOutputStream());
     }
     
     public boolean ConectarAServidor(){
@@ -107,6 +118,18 @@ public class clienteMiau implements Runnable{
             //frame.cambioTexto(split[0]);
             String XO = split[0].split(" ")[1];
             turno = Boolean.valueOf(split[1]);
+            
+            while(true){
+                move = in.readUTF();
+                ventanaPadre vp = new ventanaPadre();
+                ventanaUno vu = new ventanaUno();
+                //EnviarDato();
+                //vu.presionar(casilla);
+                vu.mostrarAnteriores();
+                vu.changeTurno();
+                vu.ganador();
+                vu.reiniciarJuego();
+            }
         }catch(Exception e){
             
         }
