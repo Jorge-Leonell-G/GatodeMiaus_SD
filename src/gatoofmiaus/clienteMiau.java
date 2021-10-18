@@ -18,32 +18,26 @@ import javax.swing.JLabel;
  *
  * @author leone
  */
-public class clienteMiau{
+public class clienteMiau implements Runnable{
     
-    private int puerto = 54543;
-    private String host= "localhost";
+    //Declaramos las variables necesarias para la conexion y comunicacion
     private Socket client;
-    private DataInputStream in;
     private DataOutputStream out;
-    
-    private ventanaPadre frame;
-    private JLabel[] casillas;
+    private DataInputStream in;
+    //El puerto debe ser el mismo en el que escucha el servidor
+    private int puerto = 54543;
+    //Si estamos en nuestra misma maquina usamos localhost si no la ip de la maquina servidor
+    private String host = "localhost";
     
     public clienteMiau(){
-        /*
         try{
-            this.frame = frame;
             //Creamos el socket con el host y el puerto, declaramos los streams de comunicacion
             client = new Socket(host,puerto);
             in = new DataInputStream(client.getInputStream());
             out = new DataOutputStream(client.getOutputStream());
-            //Tomamos una matriz con las 9 casillas del tablero
-            casillas = this.frame.getCasillas();
-            
         }catch(Exception e){
-            e.printStackTrace();         
+            e.printStackTrace();
         }
-        */
     }
     
     public boolean ConectarAServidor(){
@@ -91,4 +85,9 @@ public class clienteMiau{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     */
+
+    @Override
+    public void run() {
+        
+    }
 }

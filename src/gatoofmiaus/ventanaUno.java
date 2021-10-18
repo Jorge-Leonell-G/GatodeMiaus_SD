@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class ventanaUno extends javax.swing.JFrame{
     
-    private clienteUno cliente;
+    private clienteMiau cliente;
 
     String turno = "x";
     JLabel lbs[] = new JLabel[9];
@@ -49,7 +49,9 @@ public class ventanaUno extends javax.swing.JFrame{
             lbs[8] = jLabel9;
         
             
-            cliente = new clienteUno();
+            cliente = new clienteMiau();
+            Thread hilo = new Thread(cliente);
+            hilo.start();
             if(!cliente.ConectarAServidor()){
                 JOptionPane.showMessageDialog(this,"Debe iniciar el servidor primero", "Aviso", 0);
                 System.exit(0);

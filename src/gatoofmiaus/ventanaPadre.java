@@ -23,7 +23,7 @@ public class ventanaPadre extends javax.swing.JFrame{
     
     //datos para la conexion con el servidor
     private String ip = "localhost";
-    private int puerto = 56076;
+    private int puerto = 54543;
     
 
     String turno = "x";
@@ -42,7 +42,7 @@ public class ventanaPadre extends javax.swing.JFrame{
     };
 
 
-    public ventanaPadre() throws IOException {
+    public ventanaPadre(){
         
         try{
            initComponents();
@@ -69,6 +69,8 @@ public class ventanaPadre extends javax.swing.JFrame{
         
             //creacion de hilo
             cliente = new clienteMiau();
+            Thread hilo = new Thread(cliente);
+            hilo.start();
             if(!cliente.ConectarAServidor()){
                 JOptionPane.showMessageDialog(this,"Debe iniciar el servidor primero", "Aviso", 0);
                 System.exit(0);
@@ -822,11 +824,7 @@ public class ventanaPadre extends javax.swing.JFrame{
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new ventanaPadre().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(ventanaPadre.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new ventanaPadre().setVisible(true);
             }
         });
     }
