@@ -18,12 +18,11 @@ public class GatoOfMiaus {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
+        //abrimos primero el servidor
         ServidorGato sg = new ServidorGato();
         clienteMiau cm = new clienteMiau();
-        sg.recibir();
         cm.ConectarAServidor();
         ventanaPadre ventPadre = new ventanaPadre();
-        //abrimos primero el servidor
         ventPadre.setVisible(true);
         ventPadre.setLocationRelativeTo(null);
     }

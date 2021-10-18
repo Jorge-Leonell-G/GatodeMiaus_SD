@@ -21,10 +21,6 @@ public class ventanaPadre extends javax.swing.JFrame{
     //Necesitamos dentro de nuestro JFrame la clase del Socket Cliente
     private clienteMiau cliente;
     
-    //datos para la conexion con el servidor
-    private String ip = "localhost";
-    private int puerto = 54543;
-    
 
     String turno = "x";
     String winner = "";

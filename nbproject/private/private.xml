@@ -3,9 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Valery/Documents/NetBeansProjects/GatoOfMiaus/src/gatoofmiaus/GatoOfMiaus.java</file>
-            <file>file:/C:/Users/Valery/Documents/NetBeansProjects/GatoOfMiaus/src/gatoofmiaus/ventanaUno.java</file>
-            <file>file:/C:/Users/Valery/Documents/NetBeansProjects/GatoOfMiaus/src/gatoofmiaus/ventanaPadre.java</file>
+            <file>file:/C:/Users/leone/Downloads/GatoOfMiaus_1710_092939/GatoOfMiaus/src/gatoofmiaus/GatoOfMiaus.java</file>
+            <file>file:/C:/Users/leone/Downloads/GatoOfMiaus_1710_092939/GatoOfMiaus/src/gatoofmiaus/clienteMiau.java</file>
+            <file>file:/C:/Users/leone/Downloads/GatoOfMiaus_1710_092939/GatoOfMiaus/src/gatoofmiaus/clienteUno.java</file>
+            <file>file:/C:/Users/leone/Downloads/GatoOfMiaus_1710_092939/GatoOfMiaus/src/gatoofmiaus/ventanaPadre.java</file>
+            <file>file:/C:/Users/leone/Downloads/GatoOfMiaus_1710_092939/GatoOfMiaus/src/gatoofmiaus/ventanaUno.java</file>
+            <file>file:/C:/Users/leone/Downloads/GatoOfMiaus_1710_092939/GatoOfMiaus/src/servidor/ServidorHilo.java</file>
+            <file>file:/C:/Users/leone/Downloads/GatoOfMiaus_1710_092939/GatoOfMiaus/src/servidor/ServidorGato.java</file>
         </group>
     </open-files>
 </project-private>

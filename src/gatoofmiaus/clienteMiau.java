@@ -25,14 +25,27 @@ public class clienteMiau implements Runnable{
     private DataOutputStream out;
     private DataInputStream in;
     //El puerto debe ser el mismo en el que escucha el servidor
-    private int puerto = 54543;
+    private int puerto = 57928;
     //Si estamos en nuestra misma maquina usamos localhost si no la ip de la maquina servidor
     private String host = "localhost";
+    //acceso a los labels del tablero
+    private JLabel[] casillas;
+    //variable de movimiento (cadena debido a que se puede escribir 'x' o 'o')
+    private String move;
+    private boolean turno;
+    
+    private ventanaPadre frame;
     
     public clienteMiau(){
+        
+    }
+    
+    
+    public clienteMiau(ventanaPadre frame){
         try{
+            this.frame = frame;
             //Creamos el socket con el host y el puerto, declaramos los streams de comunicacion
-            client = new Socket(host,puerto);
+            client = new Socket(host, puerto);
             in = new DataInputStream(client.getInputStream());
             out = new DataOutputStream(client.getOutputStream());
         }catch(Exception e){
@@ -88,6 +101,15 @@ public class clienteMiau implements Runnable{
 
     @Override
     public void run() {
-        
+        try{
+            move = in.readUTF();
+            String split[] = move.split(";");
+            //frame.cambioTexto(split[0]);
+            String XO = split[0].split(" ")[1];
+            turno = Boolean.valueOf(split[1]);
+        }catch(Exception e){
+            
+        }
+           
     }
 }

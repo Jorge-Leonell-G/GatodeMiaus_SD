@@ -19,26 +19,51 @@ import java.util.logging.Logger;
  * @author leone
  */
 
-public class ServidorGato {
+public class ServidorGato implements Runnable{
     
-    //Inicializamos el puerto
-    private final int puerto = 54543;
-    //Numero maximo de conexiones (el tictactoe es un juego para 2)
-    private final int noConexiones = 2;
+    private static ServerSocket server;
+    private static Socket jugador;
+    public static int puerto;
+            
+    private static int connectMax = 2;
+    
     //Creamos una lista de sockets para guardar el socket de cada jugador
     private LinkedList<Socket> jugadores = new LinkedList<Socket>();
-    //Variable para controlar el turno de cada jugador
-    private Boolean turno = true;
-    //Matriz donde se guardan los movimientos 
-    private int G[][] = new int[3][3];
-    //Numero de veces que se juega...para controlar las X y O
-    private int turnos = 1;
+    
+    public ServidorGato(){
+        
+    }
+    
+     public ServidorGato(Socket player) {
+        this.jugador = player;
+    }
+    
+    public static void main(String[] args) throws IOException{
+        
+        server = new ServerSocket(puerto, connectMax);
+        System.out.println("Conexión establecida con el servidor\n");
+        System.out.println("Esperando jugadores\n");
+        System.out.println("----- DATOS DEL SERVIDOR -----\n");
+        System.out.println("Puerto: " + server.getLocalPort());
+        System.out.println("Host: " + server.getInetAddress());
+        System.out.println("No. máximo de conexiones: " + connectMax);
+        
+        //bucle infinito para la apertura del servidor
+         while(true) {
+            jugador = server.accept();
+            ServidorGato partida = new ServidorGato(jugador);
+            Thread hilo = new Thread(partida);
+            hilo.start();
+        }
+        
+    }
        
    //Funcion para que el servidor empieze a recibir conexiones de clientes
+    /*
     public void recibir(){
         try {
             //Creamos el socket servidor
-            ServerSocket servidor = new ServerSocket(puerto,noConexiones);
+            ServerSocket servidor = new ServerSocket(puerto, connectMax);
             //Ciclo infinito para estar escuchando por nuevos jugadores
             System.out.println("Esperando jugadores....");
             while(true){
@@ -46,23 +71,16 @@ public class ServidorGato {
                     Socket cliente = servidor.accept();
                     //Se agrega el socket a la lista
                     jugadores.add(cliente);
-                    //Se le genera un turno X o O 
-                    int xo = turnos % 2 == 0 ? 1 : 0;
-                    turnos++;
-                    //Instanciamos un hilo que estara atendiendo al cliente y lo ponemos a escuchar
-                    Runnable  run = new ServidorHilo(cliente, jugadores);
-                    Thread hilo = new Thread(run);
-                    hilo.start();
             }
         }catch (Exception e) {
             e.printStackTrace();
         }
     }
+    */
     
-    //Funcion main para correr el servidor
-    public static void main(String[] args) {
-        ServidorGato servidor= new ServidorGato();
-        servidor.recibir();
+    @Override
+    public void run() {
+        System.out.println("Jugador conectado: " + jugador.getInetAddress());
     }
 }
 
