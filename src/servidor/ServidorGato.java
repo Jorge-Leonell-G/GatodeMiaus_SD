@@ -23,7 +23,7 @@ public class ServidorGato implements Runnable{
     
     private static ServerSocket server;
     private static Socket jugador;
-    public static int puerto;
+    public static int puerto = 56444;
             
     private static int connectMax = 2;
     
@@ -44,7 +44,8 @@ public class ServidorGato implements Runnable{
         System.out.println("Conexión establecida con el servidor\n");
         System.out.println("Esperando jugadores\n");
         System.out.println("----- DATOS DEL SERVIDOR -----\n");
-        System.out.println("Puerto: " + server.getLocalPort());
+        System.out.println("Puerto local: " + server.getLocalPort());
+        System.out.println("Puerto para la comunicacion: " + puerto);
         System.out.println("Host: " + server.getInetAddress());
         System.out.println("No. máximo de conexiones: " + connectMax);
         
